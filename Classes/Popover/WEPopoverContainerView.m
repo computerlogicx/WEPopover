@@ -19,7 +19,6 @@
 	self.downArrowImageName = nil;
 	self.leftArrowImageName = nil;
 	self.rightArrowImageName = nil;
-	[super dealloc];
 }
 
 @end
@@ -52,20 +51,12 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 		[self initFrame];
 		self.backgroundColor = [UIColor clearColor];
 		UIImage *theImage = [UIImage imageNamed:properties.bgImageName];
-		bgImage = [[theImage stretchableImageWithLeftCapWidth:properties.leftBgCapSize topCapHeight:properties.topBgCapSize] retain];
+		bgImage = [theImage stretchableImageWithLeftCapWidth:properties.leftBgCapSize topCapHeight:properties.topBgCapSize];
 		
 		self.clipsToBounds = YES;
 		self.userInteractionEnabled = YES;
 	}
 	return self;
-}
-
-- (void)dealloc {
-	[properties release];
-	[contentView release];
-	[bgImage release];
-	[arrowImage release];
-	[super dealloc];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -102,8 +93,7 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 
 - (void)setContentView:(UIView *)v {
 	if (v != contentView) {
-		[contentView release];
-		contentView = [v retain];		
+		contentView = v;		
 		contentView.frame = self.contentRect;		
 		[self addSubview:contentView];
 	}
@@ -115,7 +105,8 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 
 @implementation WEPopoverContainerView(Private)
 
-- (void)initFrame {
+- (void)initFrame
+{
 	CGRect theFrame = CGRectOffset(CGRectUnion(bgRect, arrowRect), offset.x, offset.y);
 	
 	//If arrow rect origin is < 0 the frame above is extended to include it so we should offset the other rects
@@ -126,11 +117,13 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 	self.frame = theFrame;	
 }																		 
 
-- (CGSize)contentSize {
+- (CGSize)contentSize
+{
 	return self.contentRect.size;
 }
 
-- (CGRect)contentRect {
+- (CGRect)contentRect
+{
 	CGRect rect = CGRectMake(properties.leftBgMargin + properties.leftContentMargin + arrowOffset.x, 
 							 properties.topBgMargin + properties.topContentMargin + arrowOffset.y, 
 							 bgRect.size.width - properties.leftBgMargin - properties.rightBgMargin - properties.leftContentMargin - properties.rightContentMargin,
@@ -138,14 +131,16 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 	return rect;
 }
 
-- (void)setProperties:(WEPopoverContainerViewProperties *)props {
-	if (properties != props) {
-		[properties release];
-		properties = [props retain];
+- (void)setProperties:(WEPopoverContainerViewProperties *)props
+{
+	if (properties != props)
+	{
+		properties = props;
 	}
 }
 
-- (void)determineGeometryForSize:(CGSize)theSize anchorRect:(CGRect)anchorRect displayArea:(CGRect)displayArea permittedArrowDirections:(UIPopoverArrowDirection)supportedArrowDirections {	
+- (void)determineGeometryForSize:(CGSize)theSize anchorRect:(CGRect)anchorRect displayArea:(CGRect)displayArea permittedArrowDirections:(UIPopoverArrowDirection)supportedArrowDirections
+{	
 	
 	//Determine the frame, it should not go outside the display area
 	UIPopoverArrowDirection theArrowDirection = UIPopoverArrowDirectionUp;
@@ -343,18 +338,19 @@ permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
 		theArrowDirection <<= 1;
 	}
 	
-	switch (arrowDirection) {
+	switch (arrowDirection)
+	{
 		case UIPopoverArrowDirectionUp:
-			arrowImage = [upArrowImage retain];
+			arrowImage = upArrowImage;
 			break;
 		case UIPopoverArrowDirectionDown:
-			arrowImage = [downArrowImage retain];
+			arrowImage = downArrowImage;
 			break;
 		case UIPopoverArrowDirectionLeft:
-			arrowImage = [leftArrowImage retain];
+			arrowImage = leftArrowImage;
 			break;
 		case UIPopoverArrowDirectionRight:
-			arrowImage = [rightArrowImage retain];
+			arrowImage = rightArrowImage;
 			break;
 	}
 }

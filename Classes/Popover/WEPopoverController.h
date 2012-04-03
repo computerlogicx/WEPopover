@@ -22,18 +22,9 @@
 /**
  * @brief Popover controller for the iPhone, mimicing the iPad UIPopoverController interface. See that class for more details.
  */
-@interface WEPopoverController : NSObject<WETouchableViewDelegate> {
-	UIViewController *contentViewController;
-	UIView *view;
+@interface WEPopoverController : NSObject<WETouchableViewDelegate>
+{
 	WETouchableView *backgroundView;
-	
-	BOOL popoverVisible;
-	UIPopoverArrowDirection popoverArrowDirection;
-	id <WEPopoverControllerDelegate> delegate;
-	CGSize popoverContentSize;
-	WEPopoverContainerViewProperties *containerViewProperties;
-	id <NSObject> context;
-	NSArray *passthroughViews;	
 }
 
 @property(nonatomic, retain) UIViewController *contentViewController;

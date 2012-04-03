@@ -12,20 +12,6 @@
  * @brief Properties for the container view determining the area where the actual content view can/may be displayed. Also Images can be supplied for the arrow images and background.
  */
 @interface WEPopoverContainerViewProperties : NSObject
-{
-	NSString *bgImageName;
-	NSString *upArrowImageName;
-	NSString *downArrowImageName;
-	NSString *leftArrowImageName;
-	NSString *rightArrowImageName;
-	CGFloat leftBgMargin;
-	CGFloat rightBgMargin;
-	CGFloat topBgMargin;
-	CGFloat bottomBgMargin;
-	NSInteger topBgCapSize;
-	NSInteger leftBgCapSize;
-	CGFloat arrowMargin;
-}
 
 @property(nonatomic, retain) NSString *bgImageName;
 @property(nonatomic, retain) NSString *upArrowImageName;

@@ -23,9 +23,6 @@
  * @brief View that can handle touch events and/or disable touch forwording to child views
  */
 @interface WETouchableView : UIView {
-	BOOL touchForwardingDisabled;
-	id <WETouchableViewDelegate> delegate;
-	NSArray *passthroughViews;
 	BOOL testHits;
 }
 
