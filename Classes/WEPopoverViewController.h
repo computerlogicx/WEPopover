@@ -10,8 +10,9 @@
 
 @class WEPopoverController;
 
-@interface WEPopoverViewController : UIViewController {
-	WEPopoverController *popoverController;
+@interface WEPopoverViewController : UIViewController
+{
+    WEPopoverController *popoverController;
 }
 
 @property (nonatomic, retain) WEPopoverController *popoverController;

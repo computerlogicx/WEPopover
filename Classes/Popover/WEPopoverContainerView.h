@@ -13,22 +13,22 @@
  */
 @interface WEPopoverContainerViewProperties : NSObject
 
-@property(nonatomic, retain) NSString *bgImageName;
-@property(nonatomic, retain) NSString *upArrowImageName;
-@property(nonatomic, retain) NSString *downArrowImageName;
-@property(nonatomic, retain) NSString *leftArrowImageName;
-@property(nonatomic, retain) NSString *rightArrowImageName;
-@property(nonatomic, assign) CGFloat leftBgMargin;
-@property(nonatomic, assign) CGFloat rightBgMargin;
-@property(nonatomic, assign) CGFloat topBgMargin;
-@property(nonatomic, assign) CGFloat bottomBgMargin;
-@property(nonatomic, assign) CGFloat leftContentMargin;
-@property(nonatomic, assign) CGFloat rightContentMargin;
-@property(nonatomic, assign) CGFloat topContentMargin;
-@property(nonatomic, assign) CGFloat bottomContentMargin;
-@property(nonatomic, assign) NSInteger topBgCapSize;
-@property(nonatomic, assign) NSInteger leftBgCapSize;
-@property(nonatomic, assign) CGFloat arrowMargin;
+@property (nonatomic, retain) NSString *bgImageName;
+@property (nonatomic, retain) NSString *upArrowImageName;
+@property (nonatomic, retain) NSString *downArrowImageName;
+@property (nonatomic, retain) NSString *leftArrowImageName;
+@property (nonatomic, retain) NSString *rightArrowImageName;
+@property (nonatomic, assign) CGFloat leftBgMargin;
+@property (nonatomic, assign) CGFloat rightBgMargin;
+@property (nonatomic, assign) CGFloat topBgMargin;
+@property (nonatomic, assign) CGFloat bottomBgMargin;
+@property (nonatomic, assign) CGFloat leftContentMargin;
+@property (nonatomic, assign) CGFloat rightContentMargin;
+@property (nonatomic, assign) CGFloat topContentMargin;
+@property (nonatomic, assign) CGFloat bottomContentMargin;
+@property (nonatomic, assign) NSInteger topBgCapSize;
+@property (nonatomic, assign) NSInteger leftBgCapSize;
+@property (nonatomic, assign) CGFloat arrowMargin;
 
 @end
 
@@ -37,21 +37,22 @@
 /**
  * @brief Container/background view for displaying a popover view.
  */
-@interface WEPopoverContainerView : UIView {
-	UIImage *bgImage;
-	UIImage *arrowImage;
-	
-	WEPopoverContainerViewProperties *properties;
-	
-	UIPopoverArrowDirection arrowDirection;
-	
-	CGRect arrowRect;
-	CGRect bgRect;
-	CGPoint offset;
-	CGPoint arrowOffset;
-	
-	CGSize correctedSize;
-	UIView *contentView;
+@interface WEPopoverContainerView : UIView
+{
+    UIImage *bgImage;
+    UIImage *arrowImage;
+
+    WEPopoverContainerViewProperties *properties;
+
+    UIPopoverArrowDirection arrowDirection;
+
+    CGRect arrowRect;
+    CGRect bgRect;
+    CGPoint offset;
+    CGPoint arrowOffset;
+
+    CGSize correctedSize;
+    UIView *contentView;
 }
 
 /**
@@ -68,17 +69,17 @@
  * @brief Initializes the position of the popover with a size, anchor rect, display area and permitted arrow directions and optionally the properties. 
  * If the last is not supplied the defaults are taken (requires images to be present in bundle representing a black rounded background with partial transparency).
  */
-- (id)initWithSize:(CGSize)theSize 
-		anchorRect:(CGRect)anchorRect 
-	   displayArea:(CGRect)displayArea
+- (id)initWithSize:(CGSize)theSize
+        anchorRect:(CGRect)anchorRect
+             displayArea:(CGRect)displayArea
 permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections
-		properties:(WEPopoverContainerViewProperties *)properties;	
+              properties:(WEPopoverContainerViewProperties *)properties;
 
 /**
- * @brief To update the position of the popover with a new anchor rect, display area and permitted arrow directions
- */
-- (void)updatePositionWithAnchorRect:(CGRect)anchorRect 
-						 displayArea:(CGRect)displayArea
-			permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections;	
+* @brief To update the position of the popover with a new anchor rect, display area and permitted arrow directions
+*/
+- (void)updatePositionWithAnchorRect:(CGRect)anchorRect
+                         displayArea:(CGRect)displayArea
+            permittedArrowDirections:(UIPopoverArrowDirection)permittedArrowDirections;
 
 @end

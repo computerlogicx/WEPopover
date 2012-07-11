@@ -9,42 +9,48 @@
 
 #import "UIBarButtonItem+WEPopover.h" 
 
-@implementation UIBarButtonItem(WEPopover)
+@implementation UIBarButtonItem (WEPopover)
 
-- (CGRect)frameInView:(UIView *)v {
-	
-	BOOL hasCustomView = (self.customView != nil);
-	
-	if (!hasCustomView) {
-		UIView *tempView = [[UIView alloc] initWithFrame:CGRectZero];
-		self.customView = tempView;
-	}
-	
-	UIView *parentView = self.customView.superview;
-	NSUInteger indexOfView = [parentView.subviews indexOfObject:self.customView];
-	
-	if (!hasCustomView) {
-		self.customView = nil;
-	}
-	UIView *button = [parentView.subviews objectAtIndex:indexOfView];
-	return [parentView convertRect:button.frame toView:v];
+- (CGRect)frameInView:(UIView *)v
+{
+
+    BOOL hasCustomView = (self.customView != nil);
+
+    if (!hasCustomView)
+    {
+        UIView *tempView = [[UIView alloc] initWithFrame:CGRectZero];
+        self.customView = tempView;
+    }
+
+    UIView *parentView = self.customView.superview;
+    NSUInteger indexOfView = [parentView.subviews indexOfObject:self.customView];
+
+    if (!hasCustomView)
+    {
+        self.customView = nil;
+    }
+    UIView *button = [parentView.subviews objectAtIndex:indexOfView];
+    return [parentView convertRect:button.frame toView:v];
 }
 
-- (UIView *)superview {
-	
-	BOOL hasCustomView = (self.customView != nil);
-	
-	if (!hasCustomView) {
-		UIView *tempView = [[UIView alloc] initWithFrame:CGRectZero];
-		self.customView = tempView;
-	}
-	
-	UIView *parentView = self.customView.superview;
-	
-	if (!hasCustomView) {
-		self.customView = nil;
-	}
-	return parentView;
+- (UIView *)superview
+{
+
+    BOOL hasCustomView = (self.customView != nil);
+
+    if (!hasCustomView)
+    {
+        UIView *tempView = [[UIView alloc] initWithFrame:CGRectZero];
+        self.customView = tempView;
+    }
+
+    UIView *parentView = self.customView.superview;
+
+    if (!hasCustomView)
+    {
+        self.customView = nil;
+    }
+    return parentView;
 }
 
 @end

@@ -10,7 +10,8 @@
 
 @class WEPopoverViewController;
 
-@interface WEPopoverAppDelegate : NSObject <UIApplicationDelegate> {
+@interface WEPopoverAppDelegate : NSObject <UIApplicationDelegate>
+{
     UIWindow *window;
     UINavigationController *navController;
 }
